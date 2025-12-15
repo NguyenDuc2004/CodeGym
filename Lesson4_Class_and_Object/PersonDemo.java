@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class PersonDemo {
@@ -31,5 +32,40 @@ public class PersonDemo {
             System.out.println("The equation has no roots");
         }
 
+        int size = 100_000;
+        int[] arr = new int[size];
+        Random random = new Random();
+
+        // Sinh 100.000 số ngẫu nhiên
+        for (int i = 0; i < size; i++) {
+            arr[i] = random.nextInt(100_000);
+        }
+
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // Hoán đổi
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+        // ===============================================
+
+        stopWatch.stop();
+
+        System.out.println("Thời gian thực thi Selection Sort: "
+                + stopWatch.getElapsedTime() + " ms");
     }
-}
+
+    }
+
+
