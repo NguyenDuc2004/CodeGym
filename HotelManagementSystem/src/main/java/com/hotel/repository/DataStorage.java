@@ -46,6 +46,12 @@ public class DataStorage {
         listRooms.add(new Room("P101", RoomType.SINGLE, 500000, RoomStatus.AVAILABLE));
         listRooms.add(new Room("P102", RoomType.DOUBLE, 800000, RoomStatus.AVAILABLE));
         listRooms.add(new Room("P103", RoomType.VIP, 1500000, RoomStatus.AVAILABLE));
+        
+        listCustomers.add(new Customer("KH01","MINH DUC","090000009","0333111122"));
+        listCustomers.add(new Customer("KH02","KIM JI WON","090000009","03331132323"));
+        listCustomers.add(new Customer("KH03","BAE SUZY","0903333333","0333112131"));
+
+
     }
     
     public List<User> getListUsers() { return listUsers; }
@@ -78,6 +84,26 @@ public class DataStorage {
                      r.getLoaiPhong().getDisplayName().toLowerCase().contains(keyword.toLowerCase()) || r.getTrangThai().getDisplayName().toLowerCase().contains(keyword.toLowerCase()))
         .collect(Collectors.toList());
     }
+   
+   public void addKH(Customer newCus){
+       listCustomers.add(newCus);
+   }
+   
+   public boolean deleteKH(String id){
+       return listCustomers.removeIf(cus -> cus.getMaKH().equals(id));
+   }
+   
+   
+   public boolean updateKH(Customer cus) {
+    for (int i = 0; i < listCustomers.size(); i++) {
+        if (listCustomers.get(i).getMaKH().equals(cus.getMaKH())) {
+            listCustomers.set(i, cus);
+            return true; 
+        }
+    }
+    return false; 
+    }
+   
    
     public User checkLogin(String username, String password) {
         for (User u : listUsers) {

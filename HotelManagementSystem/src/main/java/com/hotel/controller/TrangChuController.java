@@ -6,6 +6,7 @@ package com.hotel.controller;
 
 import com.hotel.model.User;
 import com.hotel.repository.DataStorage;
+import com.hotel.view.QLYKHACHHANGFrame;
 import com.hotel.view.TrangChuFrame;
 
 /**
@@ -43,7 +44,10 @@ public class TrangChuController {
 
    
         view.btnManageCustomers.addActionListener(e -> {
-            javax.swing.JOptionPane.showMessageDialog(view, "Chức năng Khách hàng đang được xây dựng!");
+            QLYKHACHHANGFrame khView = new QLYKHACHHANGFrame();
+            new QLYKHACHHANGController(khView);
+            khView.setVisible(true);
+            khView.setLocationRelativeTo(null);
         });
 
     
