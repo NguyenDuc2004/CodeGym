@@ -39,5 +39,8 @@ public class Room {
     public RoomStatus getTrangThai() { return trangThai; }
     public void setTrangThai(RoomStatus trangThai) { this.trangThai = trangThai; }
 
-  
+   @Override
+   public String toString(){
+       return maPhong + "-" + trangThai;
+   }
 }

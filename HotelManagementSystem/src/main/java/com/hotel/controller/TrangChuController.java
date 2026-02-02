@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.hotel.controller;
 
 import com.hotel.model.User;
 import com.hotel.repository.DataStorage;
 import com.hotel.view.QLYKHACHHANGFrame;
 import com.hotel.view.TrangChuFrame;
+import com.hotel.view.BookingsFrame; 
+import com.hotel.view.QLYPHONGFrame;
 
 /**
  *
@@ -23,34 +21,31 @@ public class TrangChuController {
         this.currentUser = user;
         this.storage = DataStorage.getInstance();
         
-        view.lbWelcome.setText("Xin chào "+user.getUserName());
+        view.lbWelcome.setText("Xin chào " + user.getUserName());
 
-       
         initEvents();
     }
     
     private void initEvents() {
-       view.btnManageRooms.addActionListener(e -> {
-            com.hotel.view.QLYPHONGFrame roomView = new com.hotel.view.QLYPHONGFrame();
-            new com.hotel.controller.QLYPHONGController(roomView);
+ 
+        view.btnManageRooms.addActionListener(e -> {
+            QLYPHONGFrame roomView = new QLYPHONGFrame();
+            new QLYPHONGController(roomView);
             roomView.setVisible(true);
             roomView.setLocationRelativeTo(null);
-    });
-
-     
-        view.btnManageBookings.addActionListener(e -> {
-            javax.swing.JOptionPane.showMessageDialog(view, "Chức năng Đặt phòng đang được xây dựng!");
         });
-
-   
+        view.btnManageBookings.addActionListener(e -> {
+            BookingsFrame bookingView = new BookingsFrame(); 
+            new BookingController(bookingView);              
+            bookingView.setVisible(true);
+            bookingView.setLocationRelativeTo(null);
+        });
         view.btnManageCustomers.addActionListener(e -> {
             QLYKHACHHANGFrame khView = new QLYKHACHHANGFrame();
             new QLYKHACHHANGController(khView);
             khView.setVisible(true);
             khView.setLocationRelativeTo(null);
         });
-
-    
         view.btnManageAccounts.addActionListener(e -> {
             if (currentUser.getRole().equalsIgnoreCase("Admin")) {
                 javax.swing.JOptionPane.showMessageDialog(view, "Chào Admin! Đang mở Quản lý tài khoản...");
@@ -59,6 +54,4 @@ public class TrangChuController {
             }
         });
     }
-    
-   
 }
