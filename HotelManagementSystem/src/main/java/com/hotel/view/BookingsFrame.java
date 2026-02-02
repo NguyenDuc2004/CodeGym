@@ -79,7 +79,7 @@ public class BookingsFrame extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 0, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("                                   THÔNG TIN ĐẶT PHÒNG");
+        jLabel2.setText("                             THÔNG TIN ĐẶT PHÒNG");
         jLabel2.setOpaque(true);
 
         jLabel3.setText("Mã đặt");

@@ -115,6 +115,25 @@ public class DataStorage {
         }
         return false;
     }
+    
+    public void addUser(User user) {
+    this.listUsers.add(user);
+}
+
+public boolean deleteUser(String username) {
+    if (username.equalsIgnoreCase("admin")) return false;
+    return listUsers.removeIf(u -> u.getUserName().equals(username));
+}
+
+public boolean updateUser(User updatedUser) {
+    for (int i = 0; i < listUsers.size(); i++) {
+        if (listUsers.get(i).getUserName().equals(updatedUser.getUserName())) {
+            listUsers.set(i, updatedUser);
+            return true;
+        }
+    }
+    return false;
+}
 
     // ================== HỆ THỐNG ==================
     public User checkLogin(String username, String password) {

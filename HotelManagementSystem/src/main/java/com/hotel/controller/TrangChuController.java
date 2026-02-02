@@ -46,11 +46,14 @@ public class TrangChuController {
             khView.setVisible(true);
             khView.setLocationRelativeTo(null);
         });
-        view.btnManageAccounts.addActionListener(e -> {
+       view.btnManageAccounts.addActionListener(e -> {
             if (currentUser.getRole().equalsIgnoreCase("Admin")) {
-                javax.swing.JOptionPane.showMessageDialog(view, "Chào Admin! Đang mở Quản lý tài khoản...");
+            com.hotel.view.QLYTAIKHOANFrame accView = new com.hotel.view.QLYTAIKHOANFrame();
+            new com.hotel.controller.QLYTAIKHOANController(accView);
+            accView.setVisible(true);
+            accView.setLocationRelativeTo(null);
             } else {
-                javax.swing.JOptionPane.showMessageDialog(view, "Bạn không có quyền truy cập chức năng này!");
+            javax.swing.JOptionPane.showMessageDialog(view, "Bạn không có quyền truy cập!");
             }
         });
     }
