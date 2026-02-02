@@ -24,7 +24,7 @@ public class TrangChuController {
         
         view.lbWelcome.setText("Xin chào "+user.getUserName());
 
-        // 2. Gắn sự kiện cho các nút bấm trên Menu
+       
         initEvents();
     }
     
