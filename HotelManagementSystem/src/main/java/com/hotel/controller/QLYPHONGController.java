@@ -197,20 +197,28 @@ public class QLYPHONGController {
     
     
     
-    public void loadDataToTable(){
-        DefaultTableModel model = (DefaultTableModel) view.tblRooms.getModel();
-        
-        model.setRowCount(0);
-        
-        for(Room r : storage.getListRooms()){
-            model.addRow(new Object[]{
-                r.getMaPhong(),
-                r.getLoaiPhong().getDisplayName(),
-                r.getGiaPhong(),
-                r.getTrangThai().getDisplayName()
-            });
-        }
+  public void loadDataToTable() {
+    DefaultTableModel model = (DefaultTableModel) view.tblRooms.getModel();
+    model.setRowCount(0);
+
+
+    java.util.List<Room> rooms = new java.util.ArrayList<>(storage.getListRooms());
+
+ 
+    rooms.sort(java.util.Comparator.comparingDouble(Room::getGiaPhong));
+
+
+    for (Room r : rooms) {
+        model.addRow(new Object[]{
+            r.getMaPhong(),
+            r.getLoaiPhong().getDisplayName(),
+            r.getGiaPhong(),
+            r.getTrangThai().getDisplayName()
+        });
     }
-    
-    
 }
+
+}
+
+    
+    
